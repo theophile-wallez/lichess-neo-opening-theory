@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: If you use this theory or this data, please cite it as below.
+title: "The why behind every opening move: an open, bilingual book of chess opening theory"
+type: dataset
+authors:
+  - family-names: Wallez
+    given-names: Théophile
+repository-code: https://github.com/theophile-wallez/lichess-neo-opening-theory
+url: https://openings.lichessneo.com/
+license: CC-BY-SA-4.0
+version: 1.0.0
+date-released: 2026-11-19
+keywords:
+  - chess
+  - opening theory
+  - Lichess
+  - PGN
+  - Stockfish
+  - open data

@@ -1,0 +1,302 @@
+{
+  "note": "From the reviewers' logs, reworded. The logs count findings in different units (groups of findings, single items, scripted changes), so only item counts are summed here.",
+  "lots": [
+    {
+      "lot": "sicilian",
+      "name": "Sicilian",
+      "positions": [
+        249,
+        312
+      ],
+      "mistakes": [
+        188,
+        192
+      ],
+      "board": null,
+      "marks": 5,
+      "punish": 1
+    },
+    {
+      "lot": "french",
+      "name": "French",
+      "positions": [
+        285,
+        338
+      ],
+      "mistakes": [
+        126,
+        139
+      ],
+      "board": 24,
+      "marks": 24,
+      "punish": 1
+    },
+    {
+      "lot": "caro-kann",
+      "name": "Caro-Kann",
+      "positions": [
+        252,
+        290
+      ],
+      "mistakes": [
+        78,
+        106
+      ],
+      "board": 14,
+      "marks": 7,
+      "punish": 2
+    },
+    {
+      "lot": "italian",
+      "name": "Italian, Two Knights",
+      "positions": [
+        219,
+        271
+      ],
+      "mistakes": [
+        236,
+        246
+      ],
+      "board": null,
+      "marks": null,
+      "punish": null
+    },
+    {
+      "lot": "ruy-lopez",
+      "name": "Ruy Lopez",
+      "positions": [
+        193,
+        212
+      ],
+      "mistakes": [
+        108,
+        117
+      ],
+      "board": 8,
+      "marks": 5,
+      "punish": 4
+    },
+    {
+      "lot": "open-games",
+      "name": "Four Knights, other open games",
+      "positions": [
+        190,
+        221
+      ],
+      "mistakes": [
+        202,
+        207
+      ],
+      "board": null,
+      "marks": 4,
+      "punish": 5
+    },
+    {
+      "lot": "petrov-e5",
+      "name": "Petrov, other 2.Nf3 replies",
+      "positions": [
+        299,
+        321
+      ],
+      "mistakes": [
+        265,
+        289
+      ],
+      "board": 4,
+      "marks": 21,
+      "punish": 20
+    },
+    {
+      "lot": "kings-gambit-vienna",
+      "name": "King's Gambit, Vienna",
+      "positions": [
+        527,
+        550
+      ],
+      "mistakes": [
+        460,
+        464
+      ],
+      "board": 38,
+      "marks": 27,
+      "punish": 25
+    },
+    {
+      "lot": "scandinavian",
+      "name": "Scandinavian",
+      "positions": [
+        223,
+        272
+      ],
+      "mistakes": [
+        100,
+        120
+      ],
+      "board": null,
+      "marks": 7,
+      "punish": 0
+    },
+    {
+      "lot": "e4-sidelines",
+      "name": "Pirc, Alekhine, other 1.e4",
+      "positions": [
+        325,
+        342
+      ],
+      "mistakes": [
+        174,
+        183
+      ],
+      "board": 2,
+      "marks": 13,
+      "punish": 11
+    },
+    {
+      "lot": "queens-gambit",
+      "name": "Queen's Gambit, QGD, Slav",
+      "positions": [
+        285,
+        375
+      ],
+      "mistakes": [
+        226,
+        252
+      ],
+      "board": 19,
+      "marks": 14,
+      "punish": 3
+    },
+    {
+      "lot": "d4-systems",
+      "name": "London, Queen's Pawn, d4 gambits",
+      "positions": [
+        265,
+        324
+      ],
+      "mistakes": [
+        131,
+        146
+      ],
+      "board": null,
+      "marks": 6,
+      "punish": null
+    },
+    {
+      "lot": "kings-indian",
+      "name": "King's Indian",
+      "positions": [
+        228,
+        266
+      ],
+      "mistakes": [
+        74,
+        78
+      ],
+      "board": 6,
+      "marks": 5,
+      "punish": 2
+    },
+    {
+      "lot": "indian-1",
+      "name": "Nimzo-Indian, Catalan",
+      "positions": [
+        224,
+        257
+      ],
+      "mistakes": [
+        82,
+        86
+      ],
+      "board": 8,
+      "marks": 5,
+      "punish": 4
+    },
+    {
+      "lot": "indian-2",
+      "name": "Grünfeld, Benoni, Dutch, other Indians",
+      "positions": [
+        259,
+        303
+      ],
+      "mistakes": [
+        136,
+        141
+      ],
+      "board": 12,
+      "marks": 12,
+      "punish": 1
+    },
+    {
+      "lot": "english-flank",
+      "name": "English, flank openings",
+      "positions": [
+        277,
+        324
+      ],
+      "mistakes": [
+        166,
+        174
+      ],
+      "board": 1,
+      "marks": 8,
+      "punish": 4
+    }
+  ],
+  "totals": {
+    "positions": [
+      4300,
+      4978
+    ],
+    "mistakes": [
+      2752,
+      2940
+    ],
+    "board": 224,
+    "marks": 163,
+    "punish": 83,
+    "mistakesRemoved": 69,
+    "mistakesAdded": 257
+  },
+  "cloudCheck": {
+    "claims": 21073,
+    "trusted": 685,
+    "fixes": 51,
+    "remarkedChecked": 319,
+    "remarkedFixed": 40
+  },
+  "gaps": [
+    {
+      "round": 1,
+      "positions": [
+        5175,
+        5408
+      ],
+      "mistakes": [
+        3147,
+        3196
+      ]
+    },
+    {
+      "round": 2,
+      "positions": [
+        5408,
+        5653
+      ],
+      "mistakes": [
+        3196,
+        3346
+      ]
+    },
+    {
+      "round": 3,
+      "positions": [
+        5653,
+        6100
+      ],
+      "mistakes": [
+        3346,
+        3338
+      ]
+    }
+  ]
+}

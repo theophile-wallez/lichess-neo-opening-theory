@@ -1,0 +1,282 @@
+{
+  "measured": "2026-11-19",
+  "note": "Volumes of the private research library the texts were written from. The library itself is not published: it holds third-party texts.",
+  "sources": [
+    {
+      "source": "YouTube catalog",
+      "kind": "video",
+      "count": 19792,
+      "unit": "videos",
+      "detail": "6,727 hours, 71 channels"
+    },
+    {
+      "source": "YouTube transcripts",
+      "kind": "video",
+      "count": 2036,
+      "unit": "transcripts",
+      "words": 9610890
+    },
+    {
+      "source": "Lichess public studies (index)",
+      "kind": "study",
+      "count": 3799,
+      "unit": "studies",
+      "detail": "50,638 chapters, 75,944 positions, 121,232 comments, 43,476 of them explaining"
+    },
+    {
+      "source": "Wikibooks, Chess Opening Theory",
+      "kind": "wiki",
+      "count": 2620,
+      "unit": "position pages",
+      "chars": 2080124,
+      "license": "CC BY-SA"
+    },
+    {
+      "source": "Wikipedia (en)",
+      "kind": "wiki",
+      "count": 184,
+      "unit": "articles",
+      "chars": 1561661,
+      "license": "CC BY-SA"
+    },
+    {
+      "source": "Wikipedia (fr)",
+      "kind": "wiki",
+      "count": 225,
+      "unit": "articles",
+      "chars": 1254988,
+      "license": "CC BY-SA"
+    },
+    {
+      "source": "Wikipedia (de)",
+      "kind": "wiki",
+      "count": 267,
+      "unit": "articles",
+      "chars": 1237784,
+      "license": "CC BY-SA"
+    },
+    {
+      "source": "Wikipedia (ru)",
+      "kind": "wiki",
+      "count": 217,
+      "unit": "articles",
+      "chars": 561803,
+      "license": "CC BY-SA"
+    },
+    {
+      "source": "Lichess blog posts (Opening topic)",
+      "kind": "web",
+      "count": 720,
+      "unit": "posts",
+      "chars": 3869059
+    },
+    {
+      "source": "chess.com opening pages",
+      "kind": "web",
+      "count": 126,
+      "unit": "pages",
+      "chars": 350193
+    },
+    {
+      "source": "Publisher samples (Chess Stars)",
+      "kind": "book",
+      "count": 64,
+      "unit": "PDF samples",
+      "words": 130322
+    },
+    {
+      "source": "Public-domain books (Project Gutenberg)",
+      "kind": "book",
+      "count": 5,
+      "unit": "books",
+      "words": 343870
+    },
+    {
+      "source": "Per-family dossiers",
+      "kind": "dossier",
+      "count": 144,
+      "unit": "dossiers"
+    }
+  ],
+  "ideas": {
+    "count": 9925,
+    "status": {
+      "confirmed": 7585,
+      "unverified": 1568,
+      "rejected": 772
+    },
+    "kinds": {
+      "plan": 4638,
+      "mistake": 2964,
+      "trap": 1574,
+      "idea": 491,
+      "history": 115,
+      "move-order": 77,
+      "structure": 54,
+      "bad": 7,
+      "endgame": 5
+    },
+    "withVideo": 3307,
+    "withVideoStatus": {
+      "confirmed": 3145,
+      "rejected": 145,
+      "unverified": 17
+    },
+    "videosCited": 1030,
+    "channelsCited": 44,
+    "topChannels": [
+      [
+        "Hanging Pawns",
+        1817
+      ],
+      [
+        "Remote Chess Academy",
+        747
+      ],
+      [
+        "Daniel Naroditsky",
+        546
+      ],
+      [
+        "Saint Louis Chess Club",
+        402
+      ],
+      [
+        "Eric Rosen",
+        245
+      ],
+      [
+        "thechesswebsite",
+        192
+      ],
+      [
+        "GothamChess",
+        156
+      ],
+      [
+        "Chess.com",
+        139
+      ],
+      [
+        "Chess.com ES",
+        135
+      ],
+      [
+        "Chess Vibes",
+        119
+      ]
+    ],
+    "engineChecked": 9775
+  },
+  "explorer": {
+    "source": "Lichess opening explorer",
+    "speeds": "blitz, rapid, classical",
+    "ratings": "1000 and up",
+    "queried": "2026-11-11",
+    "positions": 7982
+  },
+  "catalog": {
+    "languages": {
+      "en": 15461,
+      "fr": 2238,
+      "de": 1221,
+      "ru": 564,
+      "es": 306,
+      "hi": 2
+    }
+  },
+  "trace": {
+    "line": "e4 e5 Nf3 Nc6 Bc4",
+    "ideas": [
+      {
+        "kind": "plan",
+        "idea": "The bishop on c4 eyes f7, guarded only by the king; White develops the kingside fast, castles, and either builds a centre with c3 and d4 or plays slowly with d3.",
+        "sources": [
+          {
+            "name": "Wikipedia"
+          },
+          {
+            "name": "Wikibooks"
+          },
+          {
+            "channel": "Chessfactor",
+            "video": "3w9-KWUL7k4",
+            "t": "02:06"
+          },
+          {
+            "channel": "Julien Song",
+            "video": "P1Pb7HTKjSY",
+            "t": "13:48"
+          },
+          {
+            "channel": "Hanging Pawns",
+            "video": "dP4qtaUAhWM",
+            "t": "04:10"
+          }
+        ]
+      },
+      {
+        "kind": "history",
+        "idea": "One of the oldest openings: analysed in the Göttingen manuscript and by Damiano, Polerio and Greco in the 16th and 17th centuries.",
+        "sources": [
+          {
+            "name": "Wikipedia"
+          },
+          {
+            "channel": "Hanging Pawns",
+            "video": "dP4qtaUAhWM",
+            "t": "04:10"
+          },
+          {
+            "channel": "thechesswebsite",
+            "video": "sKTAYd-fQOA",
+            "t": "03:06"
+          }
+        ]
+      },
+      {
+        "kind": "idea",
+        "idea": "3...Bc5 keeps the queen's watch on g5, so Ng5 is never possible; 3...Nf6 hits e4 at once but allows Ng5 against f7.",
+        "sources": [
+          {
+            "channel": "Remote Chess Academy",
+            "video": "GPOLvCvtzuQ",
+            "t": "02:05"
+          },
+          {
+            "channel": "ChessKid",
+            "video": "Xbd-bdv6ggE",
+            "t": "01:03"
+          },
+          {
+            "channel": "GothamChess",
+            "video": "hLFSufXxtuI",
+            "t": "00:36"
+          },
+          {
+            "channel": "Chess.com",
+            "video": "VVI1nHnP5Zg",
+            "t": "01:34"
+          }
+        ]
+      },
+      {
+        "kind": "mistake",
+        "idea": "3...h6? (to stop Ng5) spends a tempo; 4.d4 punishes it, as the centre opens while Black's pieces are home.",
+        "sources": [
+          {
+            "name": "Wikibooks"
+          },
+          {
+            "name": "a Lichess study by NoseKnowsAll"
+          },
+          {
+            "channel": "Remote Chess Academy",
+            "video": "ALwL52J8IV4",
+            "t": "03:05"
+          }
+        ]
+      }
+    ]
+  }
+}
