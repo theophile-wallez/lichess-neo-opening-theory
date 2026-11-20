@@ -771,9 +771,8 @@ td.share { color: var(--dim); }
 .verdict-move { white-space: nowrap; }
 .coach-avatar {
   position: absolute; bottom: 0; left: 50%; translate: -50% 0; width: 100%; max-width: 176px; aspect-ratio: 1.09; padding: 0; border: 0;
-  background: none; cursor: pointer; transform-origin: 50% 100%; transition: transform 0.15s;
+  background: none; cursor: pointer;
 }
-.coach-avatar:hover { transform: scale(1.04); }
 .coach-avatar:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 12px; }
 .coach-face { position: absolute; inset: 0; transform-origin: 50% 100%; animation: coach-breathe 3.5s ease-in-out infinite; }
 .coach-face::before { content: ''; position: absolute; inset: 0 -25%; background: var(--still) bottom center / auto 100% no-repeat; }
