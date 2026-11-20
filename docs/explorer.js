@@ -20,6 +20,8 @@ const HEAD_LENGTH = 0.34;
 const START_GAP = 0.35;
 // A word of the coach's text every WORD_MS, as the review types it (src/shared/coach-voice.ts).
 const WORD_MS = 35;
+// The longest time to type a text: a long text types faster, so that it ends within this time.
+const MAX_STREAM_MS = 1000;
 const MOODS = { '?!': 'doubt', '?': 'worry', '??': 'angry' };
 const FRENCH_PIECES = { N: 'C', B: 'F', R: 'T', Q: 'D', K: 'R' };
 const FILES = 'abcdefgh';
@@ -345,7 +347,7 @@ let coach = null;
 let said = '';
 let typing = 0;
 
-/** Types the card's words out, one every WORD_MS, while the coach talks; at once when motion is reduced. */
+/** Types the card's words out in MAX_STREAM_MS at most, while the coach talks; at once when motion is reduced. */
 function typeOut(words) {
   const run = ++typing;
   const units = [];
@@ -370,10 +372,11 @@ function typeOut(words) {
   coach?.setTalking(true);
   // By the clock, not by timer ticks: a busy frame shows every word whose time has come.
   const start = performance.now();
+  const wordMs = Math.min(WORD_MS, MAX_STREAM_MS / units.length);
   let shown = 0;
   const step = now => {
     if (run !== typing) return;
-    const due = Math.min(units.length, Math.floor((now - start) / WORD_MS) + 1);
+    const due = Math.min(units.length, Math.floor((now - start) / wordMs) + 1);
     while (shown < due) units[shown++].classList.remove('off');
     if (shown < units.length) requestAnimationFrame(step);
     else coach?.setTalking(false);

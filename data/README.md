@@ -48,6 +48,6 @@ and `{b:Re8}` are later moves of White and of Black, further on in the plan. `[e
 
 Every figure of the paper, which reads the same file as `docs/results.json`: counts of positions, mistakes,
 marks, words and markup; each chapter's size and parts; the coverage of Lichess's named lines and of the
-explorer's games; the frequent errors the book names; the volumes of the research library and of its index of ideas; the adversarial
+explorer's games; the frequent errors the book names; the volumes of the research library and of its index of ideas; the most viewed videos that the ideas cite (`famous`); the adversarial
 review's findings; and the book's entry for the position the paper follows from the videos to the text
 (`trace`).

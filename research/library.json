@@ -278,5 +278,147 @@
         ]
       }
     ]
-  }
+  },
+  "famous": [
+    {
+      "id": "rmbU97iftC8",
+      "title": "Learn the Caro-Kann Defense | 10-Minute Chess Openings",
+      "channel": "GothamChess",
+      "views": 7800000,
+      "ideas": 3
+    },
+    {
+      "id": "hLFSufXxtuI",
+      "title": "WIN IN 8 MOVES | The Fried Liver Attack",
+      "channel": "GothamChess",
+      "views": 6000000,
+      "ideas": 5
+    },
+    {
+      "id": "mtsabsZ4wG4",
+      "title": "How To Play The Queen's Gambit",
+      "channel": "GothamChess",
+      "views": 5600000,
+      "ideas": 6
+    },
+    {
+      "id": "0ITi9Jc0J-o",
+      "title": "Chess Openings: Fried Liver Attack",
+      "channel": "thechesswebsite",
+      "views": 4700000,
+      "ideas": 3
+    },
+    {
+      "id": "0NwwKqLd1OY",
+      "title": "Chess Opening Tricks to WIN Fast: Englund Gambit Traps, Moves & Ideas | Best Checkmate Strategy",
+      "channel": "Chess Talk",
+      "views": 3900000,
+      "ideas": 1
+    },
+    {
+      "id": "qzydxPgPKzs",
+      "title": "Chess Openings: Sicilian Defense",
+      "channel": "thechesswebsite",
+      "views": 2900000,
+      "ideas": 2
+    },
+    {
+      "id": "_g1xMZhGOuc",
+      "title": "Beat Good Players with the London | Games to Know by Heart - IM Eric Rosen",
+      "channel": "Saint Louis Chess Club",
+      "views": 2800000,
+      "ideas": 3
+    },
+    {
+      "id": "XkB4IVNaZWw",
+      "title": "A Beginner Lesson in the Stafford Gambit",
+      "channel": "Eric Rosen",
+      "views": 2600000,
+      "ideas": 18
+    },
+    {
+      "id": "6msbe_CAhf4",
+      "title": "BEST Chess Opening for Black: Sicilian Defense: Basic Strategy, Moves, Variations, Ideas & Tricks",
+      "channel": "Chess Talk",
+      "views": 2200000,
+      "ideas": 4
+    },
+    {
+      "id": "Y6-RXOh50_w",
+      "title": "BEST Chess Opening to Crush 1.e4  – The Rousseau Gambit – Every Move is a Trap!",
+      "channel": "Remote Chess Academy",
+      "views": 2200000,
+      "ideas": 1
+    },
+    {
+      "id": "cW81BAd2ins",
+      "title": "Traxler Counter Attack: Chess Opening Tricks to WIN Fast |Checkmate Moves, Strategy, Gambit & Ideas",
+      "channel": "Chess Talk",
+      "views": 2100000,
+      "ideas": 2
+    },
+    {
+      "id": "ICXoGdCcsFI",
+      "title": "5 Best Chess Opening Traps in the Queen's Gambit",
+      "channel": "Remote Chess Academy",
+      "views": 2000000,
+      "ideas": 2
+    },
+    {
+      "id": "oMQwnMR6OVk",
+      "title": "Sicilian Defense TRAPS For White [ALL Variations]",
+      "channel": "Remote Chess Academy",
+      "views": 1400000,
+      "ideas": 1
+    },
+    {
+      "id": "41rPFNY_CAY",
+      "title": "Chess Openings: Ruy Lopez",
+      "channel": "thechesswebsite",
+      "views": 1300000,
+      "ideas": 1
+    },
+    {
+      "id": "4Xpk9VIHX0s",
+      "title": "The Sicilian Defense | Chess Opening Tutorial",
+      "channel": "GM Huschenbeth",
+      "views": 1200000,
+      "ideas": 1
+    },
+    {
+      "id": "QcMz2wZvMi8",
+      "title": "This Englund Gambit Queen Sacrifice is TOO STRONG",
+      "channel": "Eric Rosen",
+      "views": 1100000,
+      "ideas": 1
+    },
+    {
+      "id": "rnm7yXtx6yw",
+      "title": "Crush the Sicilian with 2.Nc3 | Games to Know by Heart - IM Eric Rosen",
+      "channel": "Saint Louis Chess Club",
+      "views": 1000000,
+      "ideas": 2
+    },
+    {
+      "id": "Zj3SeQiiibo",
+      "title": "Apprendre facilement l'ouverture écossaise en 30 minutes",
+      "channel": "Echecs - Blitzstream",
+      "views": 1000000,
+      "ideas": 15
+    },
+    {
+      "id": "GFWI3gkizZg",
+      "title": "Ruy Lopez - Ideas, Principles and Common Variations ⎸Chess Openings",
+      "channel": "Hanging Pawns",
+      "views": 982000,
+      "ideas": 2
+    },
+    {
+      "id": "vS_yagozyy4",
+      "title": "Caro-Kann: Advance Variation - GM Ben Finegold",
+      "channel": "Saint Louis Chess Club",
+      "views": 942000,
+      "ideas": 3
+    }
+  ]
 }

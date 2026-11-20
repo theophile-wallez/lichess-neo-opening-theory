@@ -225,13 +225,48 @@ function funnel() {
   if (!lib || !box) return;
   const source = name => lib.sources.find(row => row.source === name) || {};
   const steps = [
-    [source('YouTube catalog').count, 'videos catalogued', `${source('YouTube catalog').detail}, in five languages`],
-    [source('YouTube transcripts').count, 'transcribed', `${(source('YouTube transcripts').words / 1e6).toFixed(1)} million words`],
-    [lib.ideas.count, 'ideas noted', 'each tied to its position and its sources'],
-    [lib.ideas.status.confirmed, 'confirmed', 'by the engine, the board and a human source'],
-    [results.totals.positions, 'positions written', `and ${nf.format(results.totals.mistakes)} classic mistakes`],
+    ['videos', source('YouTube catalog').count, 'videos catalogued', `${source('YouTube catalog').detail}, in five languages`],
+    ['words', source('YouTube transcripts').count, 'videos transcribed', `${(source('YouTube transcripts').words / 1e6).toFixed(1)} million words`],
+    ['ideas', lib.ideas.count, 'ideas noted', 'each tied to its position and its sources'],
+    ['checks', lib.ideas.status.confirmed, 'ideas confirmed', 'by the engine, the board and a human source'],
+    ['board', results.totals.positions, 'positions written', `and ${nf.format(results.totals.mistakes)} classic mistakes`],
   ];
-  box.innerHTML = steps.map(([value, label, note]) => `<li><b>${nf.format(value)}</b><span class="label">${label}</span><span class="note">${note}</span></li>`).join('');
+  box.innerHTML = steps.map(([art, value, label, note]) => `<li data-art="${art}"><b>${nf.format(value)}</b><span class="step-name">${label}</span><span class="note">${note}</span></li>`).join('');
+  // The scenes on the cards (funnel.js).
+  globalThis.funnelScenes?.(box, lib);
+  const svg = el('svg', { class: 'funnel-links', 'aria-hidden': 'true' }, box);
+  const links = () => {
+    const frame = box.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${frame.width} ${frame.height}`);
+    svg.replaceChildren();
+    const marker = el('marker', { id: 'funnel-head', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 9, markerHeight: 9, markerUnits: 'userSpaceOnUse', orient: 'auto' }, el('defs', {}, svg));
+    el('path', { d: 'M2 1.5L8 5L2 8.5', class: 'funnel-head' }, marker);
+    const cards = [...box.querySelectorAll('li')].map(card => card.getBoundingClientRect());
+    cards.slice(1).forEach((to, i) => {
+      const from = cards[i];
+      const x = rect => rect.left - frame.left, y = rect => rect.top - frame.top;
+      // A small gap at each end, so that the arrow stops short of the card.
+      const GAP = 6;
+      let d;
+      if (to.left >= from.right - 1 || to.right <= from.left + 1) {
+        // Side by side, in either direction: from the side of a card to the facing side of the next.
+        const sign = to.left >= from.right - 1 ? 1 : -1;
+        const ax = x(from) + (sign > 0 ? from.width : 0) + sign * GAP, ay = y(from) + from.height / 2;
+        const bx = x(to) + (sign > 0 ? 0 : to.width) - sign * GAP, by = y(to) + to.height / 2, bend = (bx - ax) * 0.6;
+        d = `M${ax} ${ay}C${ax + bend} ${ay} ${bx - bend} ${by} ${bx} ${by}`;
+      } else {
+        // On the next row: down from a card, across, and down into the next, with round corners.
+        const ax = x(from) + from.width / 2, ay = y(from) + from.height + GAP;
+        const bx = x(to) + to.width / 2, by = y(to) - GAP, mid = (ay + by) / 2;
+        const sign = Math.sign(bx - ax), r = Math.max(2, Math.min(16, Math.abs(bx - ax) / 2, (by - ay) / 2 - 5));
+        d = sign
+          ? `M${ax} ${ay}V${mid - r}Q${ax} ${mid} ${ax + sign * r} ${mid}H${bx - sign * r}Q${bx} ${mid} ${bx} ${mid + r}V${by}`
+          : `M${ax} ${ay}V${by}`;
+      }
+      el('path', { d, class: 'funnel-link', 'marker-end': 'url(#funnel-head)' }, svg);
+    });
+  };
+  new ResizeObserver(links).observe(box);
 }
 
 function rankChart(id, rows, format, color = 'var(--series-1)') {

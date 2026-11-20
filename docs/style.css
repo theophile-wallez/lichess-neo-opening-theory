@@ -140,13 +140,14 @@ kbd {
 }
 .brand img { width: 28px; height: 28px; border-radius: 22%; }
 .brand-sub { color: var(--faint); font-weight: 500; }
-.links { display: flex; gap: 2px; margin-inline: auto; overflow-x: auto; scrollbar-width: none; }
-.links a {
-  padding: 6px 11px; border-radius: 8px; color: var(--dim); font-size: 14px; font-weight: 500; text-decoration: none; white-space: nowrap;
-  transition: color 0.2s, background-color 0.2s;
-}
-.links a:hover { background: color-mix(in srgb, var(--glow) 5.1%, transparent); color: var(--text); }
-.nav-end { display: flex; align-items: center; gap: 8px; }
+.nav-end { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+/* The bar shows the store button of the browser only: Firefox, or Chrome for all others. */
+.button.store-nav { background: linear-gradient(var(--accent-top), var(--accent-low)); color: #fff;
+  box-shadow: inset 0 1px #ffffff4d, inset 0 -1px var(--accent-edge), 0 8px 24px color-mix(in srgb, var(--accent) 25%, transparent); }
+/* As on the landing: the accent gets lighter, and the button keeps its color. */
+.button.store-nav:hover { background: linear-gradient(color-mix(in oklch, var(--accent) 76%, #fff), var(--accent)); color: #fff; }
+.store-nav.firefox, :root[data-browser='firefox'] .store-nav.chrome { display: none; }
+:root[data-browser='firefox'] .store-nav.firefox { display: inline-flex; }
 .star-link {
   display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 5px 0 11px; border-radius: 9px;
   color: var(--dim); font-size: 14px; font-weight: 500; white-space: nowrap; text-decoration: none;
@@ -161,6 +162,7 @@ kbd {
 /* Room for three digits from the first paint, so the bar doesn't move when the count arrives. */
 .star-link__count b { display: inline-block; min-width: 3ch; text-align: center; font-weight: 600; }
 .star-link__count svg { color: #f5c451; }
+@media (max-width: 520px) { .nav-end .store-nav, :root[data-browser='firefox'] .nav-end .store-nav { display: none; } }
 @media (max-width: 420px) { .star-link > span:not([class]) { display: none; } }
 @media (max-width: 380px) { .brand-sub { display: none; } }
 .scheme-switch {
@@ -526,8 +528,6 @@ td.share { color: var(--dim); }
 
 
 @media (max-width: 760px) {
-  .links { display: none; }
-  .nav-end .button.small { display: none; }
   .explorer-board { padding: 14px; }
   .explorer-tools, .explorer-panel { padding-inline: 16px; }
   dl.defs { grid-template-columns: 1fr; gap: 2px; }
@@ -545,25 +545,173 @@ td.share { color: var(--dim); }
 
 /* ---- From the videos to the book ---- */
 
-.funnel { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; counter-reset: step; }
+.funnel {
+  position: relative; list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 72px 44px; margin: 0; padding: 0;
+}
 .funnel li {
-  position: relative; display: grid; align-content: start; gap: 4px; padding: 20px 18px 18px; border-radius: 16px;
+  position: relative; z-index: 1; grid-column: span 2; display: flex; flex-direction: column; padding: 22px 22px 20px; border-radius: 16px;
   background: color-mix(in srgb, var(--accent) calc(4% + var(--step, 0) * 2.4%), var(--panel));
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) calc(10% + var(--step, 0) * 6%), var(--line));
 }
+/* Three cards, then two at the center, as a funnel. The second row goes from right to left, so that the path turns under the third card. */
+.funnel li:nth-child(4) { grid-area: 2 / 4 / auto / span 2; }
+.funnel li:nth-child(5) { grid-area: 2 / 2 / auto / span 2; }
 .funnel li:nth-child(2) { --step: 1; } .funnel li:nth-child(3) { --step: 2; } .funnel li:nth-child(4) { --step: 3; } .funnel li:nth-child(5) { --step: 4; }
-.funnel li:not(:last-child)::after {
-  content: ''; position: absolute; z-index: 1; top: 50%; right: -9px; width: 8px; height: 8px; margin-top: -4px;
-  border-top: 1.6px solid var(--faint); border-right: 1.6px solid var(--faint); transform: rotate(45deg);
+.funnel b { font-size: clamp(26px, 2.6vw, 34px); font-weight: 680; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.funnel .step-name { margin-top: 10px; color: var(--text); font-size: 15px; font-weight: 600; line-height: 1.3; }
+.funnel .note { margin-top: 4px; color: var(--faint); font-size: 13.5px; line-height: 1.45; text-wrap: pretty; }
+.funnel-links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.funnel-link { fill: none; stroke: color-mix(in srgb, var(--accent) 55%, var(--line)); stroke-width: 1.5; stroke-linecap: round; }
+.funnel-head { fill: none; stroke: color-mix(in srgb, var(--accent) 75%, var(--line)); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* The scene on each card (funnel.js). */
+.funnel-art {
+  position: relative; height: 128px; margin: -8px -10px 18px; border-radius: 12px; overflow: hidden;
+  background: color-mix(in srgb, var(--ink) 60%, transparent); box-shadow: inset 0 0 0 1px var(--line);
 }
-.funnel b { font-size: clamp(24px, 2.4vw, 32px); font-weight: 680; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; line-height: 1.1; }
-.funnel .label { color: var(--text); font-size: 14.5px; font-weight: 600; }
-.funnel .note { color: var(--faint); font-size: 13px; line-height: 1.4; }
-@media (max-width: 900px) {
-  .funnel { grid-template-columns: 1fr; gap: 8px; }
-  .funnel li { grid-template-columns: minmax(96px, auto) 1fr; column-gap: 16px; align-items: baseline; padding: 14px 16px; }
-  .funnel .note { grid-column: 2; }
-  .funnel li:not(:last-child)::after { top: auto; bottom: -8px; right: auto; left: 34px; transform: rotate(135deg); }
+.mini-board { display: block; flex: none; }
+/* Softer than the main board, so that the small boards stay calm. */
+.mini-board .light { fill: color-mix(in srgb, var(--board-light) 88%, var(--accent)); }
+.mini-board .dark { fill: color-mix(in srgb, var(--board-dark) 70%, var(--board-light)); }
+@keyframes scene-pop { from { opacity: 0; scale: 0.6; translate: 0 6px; } }
+@keyframes scene-out { to { opacity: 0; scale: 0.5; } }
+
+/* The fade is on the row of previews only, so that the scene's own edge stays whole. */
+.video-window {
+  position: absolute; inset: 0; display: flex; align-items: center; padding-left: 12px; overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 88%, transparent);
+}
+.video-track { display: flex; flex: none; gap: 8px; }
+.video-tile {
+  flex: none; display: grid; gap: 3px; width: 140px; padding: 5px 5px 6px; border-radius: 10px; color: inherit; text-decoration: none;
+  background: var(--panel); box-shadow: inset 0 0 0 1px var(--line-strong), 0 2px 6px color-mix(in srgb, var(--shadow) 16%, transparent);
+}
+.video-tile.pop { animation: scene-pop 0.6s var(--hop) both; }
+.video-thumb {
+  position: relative; display: block; aspect-ratio: 16 / 9; margin-bottom: 2px; border-radius: 6px; overflow: hidden;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 45%, #000), color-mix(in srgb, var(--accent) 15%, #000));
+}
+.video-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.video-play {
+  position: absolute; right: 5px; bottom: 5px; width: 20px; height: 14px; border-radius: 4px; background: #f03;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+}
+.video-play::after {
+  content: ''; position: absolute; top: 3.5px; left: 8px; border-left: 6px solid #fff; border-block: 3.5px solid transparent;
+}
+.video-name, .video-meta { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.video-name { color: var(--text); font-size: 10.5px; font-weight: 600; line-height: 1.25; }
+.video-meta { color: var(--faint); font-size: 9.5px; line-height: 1.2; }
+
+.art-words { display: flex; align-items: center; gap: 14px; padding: 0 16px; }
+.wave { display: flex; flex: none; align-items: center; gap: 3px; height: 44px; }
+.wave i {
+  width: 3px; height: 100%; border-radius: 2px; background: var(--accent-light);
+  scale: 1 calc(0.25 + mod(var(--i) * 0.37, 0.75)); animation: wave 1.1s ease-in-out infinite; animation-delay: calc(var(--i) * -0.17s);
+}
+.wave.still i { animation: none; }
+@keyframes wave { 0%, 100% { scale: 1 0.22; } 50% { scale: 1 1; } }
+.transcript {
+  position: relative; flex: 1; height: 60px; overflow: hidden;
+  mask-image: linear-gradient(transparent, #000 45%);
+}
+.transcript-roll { position: absolute; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column; gap: 8px; }
+.transcript-line { display: flex; flex: none; gap: 4px; height: 7px; }
+.transcript-line i { flex: none; height: 7px; border-radius: 4px; background: color-mix(in srgb, var(--text) 32%, transparent); }
+.transcript-line i.pop { animation: word-in 0.3s ease-out both; transform-origin: left; }
+@keyframes word-in { from { opacity: 0; scale: 0.3 1; } }
+
+/* Ideas noted (funnel.js): the sources of an idea flow along wires into it. */
+.flow { display: flex; align-items: center; height: 100%; padding: 0 12px; }
+.flow-sources { position: relative; z-index: 1; display: grid; flex: 0 1 auto; gap: 7px; min-width: 0; min-height: 74px; }
+.flow-src {
+  display: flex; align-items: center; gap: 5px; min-width: 0; height: 20px; padding: 0 7px; border-radius: 6px;
+  background: color-mix(in srgb, var(--text) 7%, transparent); box-shadow: inset 0 0 0 1px var(--line-strong);
+  color: var(--dim); font-size: 10.5px; font-weight: 600; white-space: nowrap; animation: flow-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.flow-sources.out .flow-src { animation: flow-out 0.3s ease-in forwards; }
+.flow-name { overflow: hidden; text-overflow: ellipsis; }
+.flow-src time { margin-left: auto; padding-left: 6px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.icon-yt { position: relative; flex: none; width: 12px; height: 9px; border-radius: 2.5px; background: #f03; }
+.icon-yt::after { content: ''; position: absolute; top: 2px; left: 4.5px; border-left: 4px solid #fff; border-block: 2.5px solid transparent; }
+.icon-ref { display: grid; flex: none; place-items: center; width: 12px; height: 12px; border-radius: 3px; background: #fff; color: #000; font: 700 8px/1 Georgia, serif; font-style: normal; }
+.flow-wires { position: relative; z-index: 2; flex: 1; min-width: 28px; height: 74px; overflow: visible; pointer-events: none; }
+.flow-wire { fill: none; stroke: color-mix(in srgb, var(--accent) 55%, var(--line)); stroke-width: 1.5; stroke-linecap: round; transition: stroke-dashoffset 0.5s ease-out; }
+.flow-port { fill: var(--panel); stroke: color-mix(in srgb, var(--accent) 60%, var(--line)); stroke-width: 1.5; transition: fill 0.25s, stroke 0.25s; }
+.flow-port.lit { fill: var(--accent-light); stroke: var(--accent-light); }
+.flow-spark { fill: var(--accent-light); filter: drop-shadow(0 0 3px var(--accent)); }
+.flow-card {
+  position: relative; z-index: 1; display: grid; flex: none; justify-items: center; gap: 6px; padding: 7px; border-radius: 10px;
+  background: var(--panel); box-shadow: inset 0 0 0 1px var(--line-strong), 0 2px 8px color-mix(in srgb, var(--shadow) 18%, transparent);
+}
+.flow-card.hit { animation: flow-hit 0.5s var(--hop); }
+.flow-board { display: block; transition: opacity 0.35s, filter 0.35s; }
+.flow-board .mini-board { border-radius: 5px; }
+.flow-arrow { transition: opacity 0.3s; }
+/* While the sources come in, three dots wait in the place of the tag, and the board stays dim. */
+.flow-slot { display: grid; place-items: center; }
+.flow-slot > * { grid-area: 1 / 1; }
+.flow-slot .idea-chip { height: 20px; padding: 0 8px; font-size: 10.5px; font-weight: 700; transition: opacity 0.3s, scale 0.35s var(--hop); }
+.flow-wait {
+  display: flex; align-items: center; gap: 4px; height: 20px; padding: 0 9px; border-radius: 999px; opacity: 0; scale: 0.8; transition: opacity 0.3s, scale 0.3s;
+  background: color-mix(in srgb, var(--accent) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.flow-wait i { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-light); animation: flow-wait 1s ease-in-out infinite; }
+.flow-wait i:nth-child(2) { animation-delay: 0.15s; }
+.flow-wait i:nth-child(3) { animation-delay: 0.3s; }
+.flow-card.empty .flow-board { opacity: 0.5; filter: saturate(0.4); }
+.flow-card.empty .flow-arrow, .flow-card.empty .idea-chip { opacity: 0; }
+.flow-card.empty .idea-chip { scale: 0.8; }
+.flow-card.empty .flow-wait { opacity: 1; scale: 1; }
+@keyframes flow-in { from { opacity: 0; translate: -14px 0; } }
+@keyframes flow-out { to { opacity: 0; translate: -10px 0; } }
+@keyframes flow-hit { 40% { scale: 1.06; box-shadow: inset 0 0 0 1px var(--accent), 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); } }
+@keyframes flow-wait { 0%, 60%, 100% { translate: 0 0; opacity: 0.45; } 30% { translate: 0 -3px; opacity: 1; } }
+/* The tag colors, by kind. */
+.idea-chip {
+  --kind: var(--accent); display: inline-flex; align-items: center; border-radius: 999px; white-space: nowrap; line-height: 1.3;
+  background: color-mix(in srgb, var(--kind) 15%, transparent); color: color-mix(in srgb, var(--kind) 65%, var(--text));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--kind) 28%, transparent);
+}
+.kind-mistake { --kind: #e69d00; } .kind-trap { --kind: #df5353; } .kind-idea { --kind: #53b2ea; }
+.kind-history { --kind: #ba9978; } .kind-move-order { --kind: #8fbf3f; } .kind-structure { --kind: #c084fc; }
+
+.check-list { display: grid; align-content: center; gap: 8px; height: 100%; padding: 0 16px; }
+.check-row { display: flex; align-items: center; gap: 10px; color: var(--faint); font-size: 12.5px; font-weight: 500; transition: color 0.3s; }
+.check-dot {
+  position: relative; flex: none; width: 17px; height: 17px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--line-strong); transition: background-color 0.3s, box-shadow 0.3s;
+}
+.check-dot::after {
+  content: ''; position: absolute; top: 4px; left: 5.5px; width: 3.5px; height: 6.5px; rotate: 45deg; scale: 0;
+  border-right: 2px solid #fff; border-bottom: 2px solid #fff; transition: scale 0.35s var(--hop);
+}
+.check-row.done { color: var(--text); }
+.check-row.done .check-dot { background: #629924; box-shadow: none; }
+.check-row.done .check-dot::after { scale: 1; }
+
+.write-board { display: flex; align-items: center; gap: 18px; height: 100%; padding: 0 18px; }
+.write-squares { position: relative; flex: none; width: 76px; height: 76px; }
+.write-squares .mini-board { border-radius: 5px; }
+.write-piece { position: absolute; top: 0; left: 0; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.write-badge { position: absolute; z-index: 1; width: 16px; height: 16px; transform: translate(-72%, -28%); animation: badge-in 0.45s var(--hop); }
+.write-badge svg { display: block; width: 100%; height: 100%; border-radius: 25%; background: #1a1820; box-shadow: 0 2px 6px rgb(0 0 0 / 50%); }
+.write-texts { display: grid; flex: 1; gap: 12px; }
+.write-row { display: flex; align-items: center; gap: 8px; }
+.write-lang { width: 18px; color: var(--faint); font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; }
+.write-track { flex: 1; height: 7px; border-radius: 4px; background: color-mix(in srgb, var(--text) 8%, transparent); overflow: hidden; }
+.write-bar { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--accent-light); transition: width 0.6s ease; }
+@media (max-width: 760px) {
+  .funnel { grid-template-columns: 1fr; row-gap: 44px; padding: 0; }
+  .funnel li, .funnel li:nth-child(4), .funnel li:nth-child(5) {
+    grid-area: auto; display: grid; grid-template-columns: minmax(96px, auto) 1fr; column-gap: 16px; align-items: baseline;
+    margin: 0 48px 0 0; padding: 14px 16px;
+  }
+  .funnel li:nth-child(even) { margin: 0 0 0 48px; }
+  .funnel .step-name { margin-top: 0; }
+  .funnel-art { grid-column: 1 / -1; margin: -4px -6px 14px; }
+  .funnel .note { grid-column: 2; margin-top: 2px; }
 }
 
 .sources-grid .chart svg { overflow: visible; }
@@ -716,8 +864,11 @@ td.share { color: var(--dim); }
 :root[data-browser='firefox'] .button.store.chrome {
   order: 0; background: color-mix(in srgb, var(--glow) 5.1%, transparent); color: var(--text); box-shadow: inset 0 0 0 1px var(--line-strong);
 }
-.button.store.chrome:hover, :root[data-browser='firefox'] .button.store.firefox:hover { filter: brightness(1.08); color: #fff; }
+.button.store.chrome:hover, :root[data-browser='firefox'] .button.store.firefox:hover { background: linear-gradient(color-mix(in oklch, var(--accent) 76%, #fff), var(--accent)); color: #fff; }
 .browser-logo { filter: drop-shadow(0 1px 2px color-mix(in srgb, var(--shadow) 30%, transparent)); }
+/* The hero button shows the logo of the store that the browser uses: Firefox, or Chrome for all others. */
+.get-neo .browser-logo.firefox, :root[data-browser='firefox'] .get-neo .browser-logo.chrome { display: none; }
+:root[data-browser='firefox'] .get-neo .browser-logo.firefox { display: block; }
 .try .note { margin: 0; color: var(--faint); font-size: 14px; }
 .try .note a { color: var(--dim); }
 /* The coaches stand on the card's bottom edge, side by side, as on the review's card. */
